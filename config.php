@@ -3,7 +3,7 @@
 return [
     'compiler' => [
         'js' => [
-            'Foundation6' => [
+            'macdabby/lightning-foundation' => [
                 // Source file => Dest file
                 'vendor/zurb/foundation/dist/js/foundation.min.js' => [
                     'dest' => 'lightning.min.js',
@@ -12,7 +12,7 @@ return [
             ],
         ],
         'css' => [
-            'Foundation6' => [
+            'macdabby/lightning-foundation' => [
                 // Source file => Dest file
                 'vendor/zurb/foundation/dist/css/foundation.css' => 'lightning.css',
                 'vendor/zurb/foundation/dist/css/foundation-float.css' => 'lightning.css',
@@ -20,6 +20,6 @@ return [
         ],
     ],
     'template' => [
-        'default' => ['document', 'Foundation6'],
+        'default' => ['document', 'macdabby/lightning-foundation'],
     ],
 ];
