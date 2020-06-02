@@ -39,17 +39,7 @@ use Lightning\View\Menu;
                             </div>
                             <div class="top-bar-right">
                                 <ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
-                                    <?= Menu::render('main'); ?>
-                                    <li>
-                                        <?php if (ClientUser::getInstance()->isImpersonating()): ?>
-                                            <a href="/user?action=stop-impersonating">Return to Admin User</a>
-                                        <?php endif; ?>
-                                        <?php if (ClientUser::getInstance()->id > 0): ?>
-                                            <a href="/user?action=logout">Log Out</a>
-                                        <?php else: ?>
-                                            <a href="/user">Log In</a>
-                                        <?php endif; ?>
-                                    </li>
+                                    <?= Menu::render('main', true); ?>
                                 </ul>
                             </div>
                         </div>
