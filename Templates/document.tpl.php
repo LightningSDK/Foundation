@@ -15,87 +15,68 @@ use Lightning\View\Menu;
     <?= $this->build(['metadata', 'Lightning']); ?>
     <?= $this->renderHeader(); ?>
 </head>
-<body class="antialiased hide-extras">
-<div class="marketing off-canvas-wrap" data-offcanvas>
-    <div class="inner-wrap">
-
+<body>
+<div style="min-height: 100vh; display: flex; flex-direction: column;">
         <?php if (empty($hide_header)): ?>
-            <div style="overflow:hidden">
+            <div>
                 <?= \Lightning\View\CMS::embed('site_template_header'); ?>
             </div>
         <?php endif; ?>
-        <div class="row">
-            <?php if (empty($hide_menu)): ?>
-                <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
-                    <button class="menu-icon" type="button" data-toggle="main-menu"></button>
-                    <div class="title-bar-title">Menu</div>
-                </div>
-                <div class="top-bar" id="main-menu">
-                    <div class="top-bar-left hide-for-small-only">
-                        <ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
-                            <li class="menu-text"><a href="/"><?= \Lightning\View\CMS::plain('site_name', ['default' => 'Your new site!']); ?></a></li>
-                        </ul>
-                    </div>
-                    <div class="top-bar-right">
-                        <ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
-                            <?php if ((array)$site->site_menu): ?>
-                                <?= Menu::render($site->site_menu); ?>
-                            <?php else: ?>
-                                <li class="home"><a href="/">Home</a></li>
-                                <li class="blog"><a href="/blog">Blog</a></li>
-                                <li class="contact"><a href="/contact">Contact</a></li>
-                            <?php endif; ?>
-                            <li>
-                                <?php if (ClientUser::getInstance()->isImpersonating()): ?>
-                                    <a href="/user?action=stop-impersonating">Return to Admin User</a>
-                                <?php endif; ?>
-                                <?php if (ClientUser::getInstance()->id > 0): ?>
-                                    <a href="/user?action=logout">Log Out</a>
-                                <?php else: ?>
-                                    <a href="/user">Log In</a>
-                                <?php endif; ?>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            <?php endif; ?>
-            <?php if (ClientUser::getInstance()->isAdmin()): ?>
-                <div class="title-bar" data-responsive-toggle="admin-menu" data-hide-for="medium">
-                    <button class="menu-icon" type="button" data-toggle="admin-menu"></button>
-                    <div class="title-bar-title">Admin Menu</div>
-                </div>
-                <div class="top-bar" id="admin-menu">
-                    <div class="top-bar-left hide-for-small-only">
-                        <ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
-                            <li>Admin Menu:</li>
-                        </ul>
-                    </div>
-                    <div class="top-bar-right">
-                        <ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
-                            <li class="has-dropdown not-click">
-                                <a href="/admin/blog/edit">Blog</a>
-                                <ul class="menu">
-                                    <li><a href="/admin/blog/edit">Blog Posts</a></li>
-                                    <li><a href="/admin/blog/categories">Blog Categories</a></li>
+        <?php if (empty($hide_menu) || ClientUser::getInstance()->isAdmin()): ?>
+        <div class="menu" id="menu-container" style="z-index: 100000" data-sticky-container>
+            <div class="sticky" style="width:100%" data-sticky data-margin-top="0" data-top-anchor="menu-container">
+                <div class="row">
+                    <?php if (empty($hide_menu)): ?>
+                        <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
+                            <button class="menu-icon" type="button" data-toggle="main-menu"></button>
+                            <div class="title-bar-title">Menu</div>
+                        </div>
+                        <div class="top-bar" id="main-menu">
+                            <div class="top-bar-left hide-for-small-only">
+                                <ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
+                                    <li class="menu-text"><a href="/"><?= \Lightning\View\CMS::plain('site_name', ['default' => 'Your new site!']); ?></a></li>
                                 </ul>
-                            </li>
-                            <li><a href="/admin/pages">Pages</a></li>
-                            <li><a href="/admin/users">Users</a></li>
-                            <li class="has-dropdown not-click">
-                                <a href="/admin/mailing/lists">Mailing</a>
-                                <ul class="menu">
-                                    <li><a href="/admin/mailing/lists">Mailing Lists</a></li>
-                                    <li><a href="/admin/mailing/templates">Templates</a></li>
-                                    <li><a href="/admin/mailing/messages">Messages</a></li>
+                            </div>
+                            <div class="top-bar-right">
+                                <ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
+                                    <?= Menu::render('main'); ?>
+                                    <li>
+                                        <?php if (ClientUser::getInstance()->isImpersonating()): ?>
+                                            <a href="/user?action=stop-impersonating">Return to Admin User</a>
+                                        <?php endif; ?>
+                                        <?php if (ClientUser::getInstance()->id > 0): ?>
+                                            <a href="/user?action=logout">Log Out</a>
+                                        <?php else: ?>
+                                            <a href="/user">Log In</a>
+                                        <?php endif; ?>
+                                    </li>
                                 </ul>
-                            </li>
-                        </ul>
-                    </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                    <?php if (ClientUser::getInstance()->isAdmin()): ?>
+                        <div class="title-bar" data-responsive-toggle="admin-menu" data-hide-for="medium">
+                            <button class="menu-icon" type="button" data-toggle="admin-menu"></button>
+                            <div class="title-bar-title">Admin Menu</div>
+                        </div>
+                        <div class="top-bar" id="admin-menu">
+                            <div class="top-bar-left hide-for-small-only">
+                                <ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
+                                    <li>Admin Menu:</li>
+                                </ul>
+                            </div>
+                            <div class="top-bar-right">
+                                <ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
+                                    <?= Menu::render('admin'); ?>
+                                </ul>
+                            </div>
+                        </div>
+                    <?php endif; ?>
                 </div>
-            <?php endif; ?>
+            </div>
         </div>
-
-        <section role="main" class="scroll-container">
+        <?php endif; ?>
+        <div>
             <?php if (empty($full_width)): ?>
                 <div class="row">
                     <?php if (!empty($right_column)): ?>
@@ -132,11 +113,13 @@ use Lightning\View\Menu;
                     $this->build($content);
                 endif; ?>
             <?php endif; ?>
-        </section>
+        </div>
         <?php if (empty($hide_footer)): ?>
-            <?= \Lightning\View\CMS::embed('site_template_footer'); ?>
+            <div style="margin-top:auto;">
+                <?= \Lightning\View\CMS::embed('site_template_footer'); ?>
+                footer
+            </div>
         <?php endif; ?>
-    </div>
 </div>
 <?= $this->renderFooter(); ?>
 </body>
