@@ -1,8 +1,8 @@
 <!doctype html>
 <?php
-use Lightning\Tools\ClientUser;
-use Lightning\Tools\Messenger;
-use Lightning\View\Menu;
+use lightningsdk\core\Tools\ClientUser;
+use lightningsdk\core\Tools\Messenger;
+use lightningsdk\core\View\Menu;
 
 \lightningsdk\foundation\View\Foundation::init();
 ?>
@@ -12,14 +12,14 @@ use Lightning\View\Menu;
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <?= $this->build(['metadata', 'Lightning']); ?>
+    <?= $this->build(['metadata', 'lightningsdk/core']); ?>
     <?= $this->renderHeader(); ?>
 </head>
 <body>
 <div style="min-height: 100vh; display: flex; flex-direction: column;">
         <?php if (empty($hide_header)): ?>
             <div>
-                <?= \Lightning\View\CMS::embed('site_template_header'); ?>
+                <?= \lightningsdk\core\View\CMS::embed('site_template_header'); ?>
             </div>
         <?php endif; ?>
         <?php if (empty($hide_menu) || ClientUser::getInstance()->isAdmin()): ?>
@@ -34,7 +34,7 @@ use Lightning\View\Menu;
                         <div class="top-bar" id="main-menu">
                             <div class="top-bar-left hide-for-small-only">
                                 <ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
-                                    <li class="menu-text"><a href="/"><?= \Lightning\View\CMS::plain('site_name', ['default' => 'Your new site!']); ?></a></li>
+                                    <li class="menu-text"><a href="/"><?= \lightningsdk\core\View\CMS::plain('site_name', ['default' => 'Your new site!']); ?></a></li>
                                 </ul>
                             </div>
                             <div class="top-bar-right">
@@ -106,7 +106,7 @@ use Lightning\View\Menu;
         </div>
         <?php if (empty($hide_footer)): ?>
             <div style="margin-top:auto;">
-                <?= \Lightning\View\CMS::embed('site_template_footer'); ?>
+                <?= \lightningsdk\core\View\CMS::embed('site_template_footer'); ?>
                 footer
             </div>
         <?php endif; ?>
