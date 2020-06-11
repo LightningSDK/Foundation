@@ -3,23 +3,26 @@
 return [
     'compiler' => [
         'js' => [
-            'macdabby/lightning-foundation' => [
+            'lightningsdk/foundation' => [
                 // Source file => Dest file
                 'vendor/zurb/foundation/dist/js/foundation.min.js' => [
                     'dest' => 'lightning.min.js',
-                    'requires_module' => ['Lightning', 'macdabby/lightning-jquery']
+                    'requires_module' => ['Lightning', 'lightningsdk/jquery']
                 ],
             ],
         ],
         'css' => [
-            'macdabby/lightning-foundation' => [
+            'lightningsdk/foundation' => [
                 // Source file => Dest file
                 'vendor/zurb/foundation/dist/css/foundation.css' => 'lightning.css',
                 'vendor/zurb/foundation/dist/css/foundation-float.css' => 'lightning.css',
             ],
         ],
+        'sass' => [
+            'vendor/zurb/foundation/scss',
+        ],
     ],
     'template' => [
-        'default' => ['document', 'macdabby/lightning-foundation'],
+        'default' => ['document', 'lightningsdk/foundation'],
     ],
 ];

@@ -1,5 +1,5 @@
 {
-  "name": "macdabby/lightning-foundation",
+  "name": "lightningsdk/foundation",
   "type": "library",
   "description": "Adds foundation 6 functionality and templates",
   "version": "6.6.0",

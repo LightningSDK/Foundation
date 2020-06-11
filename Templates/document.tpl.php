@@ -4,7 +4,7 @@ use Lightning\Tools\ClientUser;
 use Lightning\Tools\Messenger;
 use Lightning\View\Menu;
 
-\macdabby\lightning_foundation\View\Foundation::init();
+\lightningsdk\foundation\View\Foundation::init();
 ?>
 <!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
 <html class="no-js" lang="en" dir="ltr">
