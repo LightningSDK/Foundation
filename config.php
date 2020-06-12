@@ -7,7 +7,7 @@ return [
                 // Source file => Dest file
                 'vendor/zurb/foundation/dist/js/foundation.min.js' => [
                     'dest' => 'lightning.min.js',
-                    'requires_module' => ['Lightning', 'lightningsdk/jquery']
+                    'requires_module' => ['lightningsdk/core', 'lightningsdk/jquery']
                 ],
             ],
         ],
