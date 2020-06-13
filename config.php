@@ -19,7 +19,9 @@ return [
             ],
         ],
         'sass' => [
-            'vendor/zurb/foundation/scss',
+            'includes' => [
+                'vendor/zurb/foundation/scss',
+            ],
         ],
     ],
     'template' => [
