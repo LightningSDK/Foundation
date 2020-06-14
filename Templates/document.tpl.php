@@ -15,9 +15,11 @@ use lightningsdk\core\View\Menu;
     <?= $this->build(['metadata', 'lightningsdk/core']); ?>
     <?= $this->renderHeader(); ?>
 </head>
-<body style="<?= \lightningsdk\core\View\CMS::plain('site_body_style', ['display_only' => true]); ?>" class="<?= \lightningsdk\core\View\CMS::plain('site_body_class', ['display_only' => true]); ?>">
+<body style="<?= \lightningsdk\core\View\CMS::plain('site_body_style', ['display_only' => true]); ?>" class="no-js <?= \lightningsdk\core\View\CMS::plain('site_body_class', ['display_only' => true]); ?>">
+<?php if (ClientUser::getInstance()->isAdmin()): ?>
 Body Style: <?= \lightningsdk\core\View\CMS::plain('site_body_style', ['norender' => true]); ?><br>
 Body Class: <?= \lightningsdk\core\View\CMS::plain('site_body_class', ['norender' => true]); ?>
+<?php endif; ?>
 <div style="min-height: 100vh; display: flex; flex-direction: column;">
         <?php if (empty($hide_header)): ?>
             <div>
@@ -25,11 +27,11 @@ Body Class: <?= \lightningsdk\core\View\CMS::plain('site_body_class', ['norender
             </div>
         <?php endif; ?>
         <?php if (empty($hide_menu) || ClientUser::getInstance()->isAdmin()): ?>
-        <div class="menu" id="menu-container" style="z-index: 1000" data-sticky-container>
+        <div id="menu-container" style="z-index: 1000" data-sticky-container>
             <div class="sticky" style="width:100%" data-sticky data-margin-top="0" data-top-anchor="menu-container">
                 <div class="row">
                     <?php if (empty($hide_menu)): ?>
-                        <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
+                        <div class="title-bar hide-for-medium" data-responsive-toggle="main-menu" data-hide-for="medium">
                             <button class="menu-icon" type="button" data-toggle="main-menu"></button>
                             <div class="title-bar-title">Menu</div>
                         </div>
@@ -47,7 +49,7 @@ Body Class: <?= \lightningsdk\core\View\CMS::plain('site_body_class', ['norender
                         </div>
                     <?php endif; ?>
                     <?php if (ClientUser::getInstance()->isAdmin()): ?>
-                        <div class="title-bar" data-responsive-toggle="admin-menu" data-hide-for="medium">
+                        <div class="title-bar hide-for-medium" data-responsive-toggle="admin-menu" data-hide-for="medium">
                             <button class="menu-icon" type="button" data-toggle="admin-menu"></button>
                             <div class="title-bar-title">Admin Menu</div>
                         </div>
