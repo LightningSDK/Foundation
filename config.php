@@ -20,7 +20,7 @@ return [
         ],
         'sass' => [
             'includes' => [
-                'vendor/zurb/foundation/scss',
+                'foundation' => 'vendor/zurb/foundation/scss',
             ],
         ],
     ],
