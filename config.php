@@ -23,6 +23,11 @@ return [
                 'foundation' => 'vendor/zurb/foundation/scss',
             ],
         ],
+        'copy' => [
+            'lightningsdk/foundation' => [
+                'js/ckeditor-plugins/**' => 'js/ckeditor/plugins',
+            ],
+        ],
     ],
     'template' => [
         'default' => ['document', 'lightningsdk/foundation'],
