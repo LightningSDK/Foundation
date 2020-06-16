@@ -85,7 +85,7 @@ Body Class: <?= \lightningsdk\core\View\CMS::plain('site_body_class', ['norender
                             endif; ?>
                         </div>
                         <div class="small-12 medium-4 columns right-column">
-                            <?php $this->build('right_column'); ?>
+                            <?= \lightningsdk\core\View\CMS::embed('right_column'); ?>
                         </div>
                     <?php else: ?>
                         <div class="large-12 columns">
