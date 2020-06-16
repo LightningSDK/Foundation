@@ -111,7 +111,6 @@ Body Class: <?= \lightningsdk\core\View\CMS::plain('site_body_class', ['norender
         <?php if (empty($hide_footer)): ?>
             <div style="margin-top:auto;">
                 <?= \lightningsdk\core\View\CMS::embed('site_template_footer'); ?>
-                footer
             </div>
         <?php endif; ?>
 </div>
