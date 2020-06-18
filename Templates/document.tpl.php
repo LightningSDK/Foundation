@@ -38,7 +38,9 @@ Body Class: <?= \lightningsdk\core\View\CMS::plain('site_body_class', ['norender
                         <div class="top-bar" id="main-menu">
                             <div class="top-bar-left hide-for-small-only">
                                 <ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
-                                    <li class="menu-text"><a href="/"><?= \lightningsdk\core\View\CMS::plain('site_name', ['default' => 'Your new site!']); ?></a></li>
+                                    <li><a href="/"><?= \lightningsdk\core\View\CMS::plain('site_name', ['default' => 'Your new site!', 'display_only' => true]); ?></a></li>
+                                    <?= \lightningsdk\core\View\SocialMedia\Links::render(); ?>
+                                    <li><?= \lightningsdk\core\View\CMS::plain('site_name', ['default' => 'Your new site!', 'norender' => true]); ?></li>
                                 </ul>
                             </div>
                             <div class="top-bar-right">
