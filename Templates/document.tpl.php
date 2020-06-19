@@ -2,6 +2,7 @@
 <?php
 use lightningsdk\core\Tools\ClientUser;
 use lightningsdk\core\Tools\Messenger;
+use lightningsdk\core\Tools\Request;
 use lightningsdk\core\View\Menu;
 
 \lightningsdk\foundation\View\Foundation::init();
@@ -38,9 +39,9 @@ Body Class: <?= \lightningsdk\core\View\CMS::plain('site_body_class', ['norender
                         <div class="top-bar" id="main-menu">
                             <div class="top-bar-left hide-for-small-only">
                                 <ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
-                                    <li><a href="/"><?= \lightningsdk\core\View\CMS::plain('site_name', ['default' => 'Your new site!', 'display_only' => true]); ?></a></li>
+                                    <li><a href="/"><?= \lightningsdk\core\View\CMS::plain('site_name', ['default' => 'Your new site!', 'display_only' => true, 'cache' => true]); ?></a></li>
                                     <?= \lightningsdk\core\View\SocialMedia\Links::render(); ?>
-                                    <li><?= \lightningsdk\core\View\CMS::plain('site_name', ['default' => 'Your new site!', 'norender' => true]); ?></li>
+                                    <li><?= \lightningsdk\core\View\CMS::plain('site_name', ['default' => 'Your new site!', 'norender' => true, 'cache' => true]); ?></li>
                                 </ul>
                             </div>
                             <div class="top-bar-right">
@@ -75,30 +76,24 @@ Body Class: <?= \lightningsdk\core\View\CMS::plain('site_body_class', ['norender
         <div>
             <?php if (empty($full_width)): ?>
                 <div class="row">
+                    <div class="medium-<?=!empty($right_column)?8:12;?> columns">
+                        <?php if (!empty($page_header)): ?>
+                            <h1 id="page_header"><?=$page_header?></h1>
+                        <?php
+                        endif;
+                        echo Messenger::renderErrorsAndMessages();
+                        if (!empty($content)) :
+                            $this->build($content);
+                        endif; ?>
+                        <?php if (!empty($this->vars['share']) && (Request::getLocation() == '' || Request::getLocation() == 'index')) : ?>
+                            <div class="social-share">
+                                <?= \lightningsdk\core\View\SocialMedia\Links::render(Request::getURL()); ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
                     <?php if (!empty($right_column)): ?>
-                        <div class="medium-8 columns">
-                            <?php if (!empty($page_header)): ?>
-                                <h1 id="page_header"><?=$page_header?></h1>
-                            <?php
-                            endif;
-                            echo Messenger::renderErrorsAndMessages();
-                            if (!empty($content)) :
-                                $this->build($content);
-                            endif; ?>
-                        </div>
                         <div class="small-12 medium-4 columns right-column">
-                            <?= \lightningsdk\core\View\CMS::embed('right_column'); ?>
-                        </div>
-                    <?php else: ?>
-                        <div class="large-12 columns">
-                            <?php if (!empty($page_header)): ?>
-                                <h1 id="page_header"><?=$page_header?></h1>
-                            <?php
-                            endif;
-                            echo Messenger::renderErrorsAndMessages();
-                            if (!empty($content)) :
-                                $this->build($content);
-                            endif; ?>
+                            <?= \lightningsdk\core\View\CMS::embed('right_column', ['cache' => true]); ?>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -112,7 +107,7 @@ Body Class: <?= \lightningsdk\core\View\CMS::plain('site_body_class', ['norender
         </div>
         <?php if (empty($hide_footer)): ?>
             <div style="margin-top:auto;">
-                <?= \lightningsdk\core\View\CMS::embed('site_template_footer'); ?>
+                <?= \lightningsdk\core\View\CMS::embed('site_template_footer', ['cache' => true]); ?>
             </div>
         <?php endif; ?>
 </div>
