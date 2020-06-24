@@ -23,7 +23,7 @@ Body Class: <?= \lightningsdk\core\View\CMS::plain('site_body_class', ['norender
 <?php endif; ?>
 <div style="min-height: 100vh; display: flex; flex-direction: column;">
         <?php if (empty($hide_header)): ?>
-            <div>
+            <div class="page-header">
                 <?= \lightningsdk\core\View\CMS::embed('site_template_header'); ?>
             </div>
         <?php endif; ?>
@@ -33,7 +33,7 @@ Body Class: <?= \lightningsdk\core\View\CMS::plain('site_body_class', ['norender
             <div id="menu-wrapper" class="sticky" style="width:100%" data-sticky data-margin-top="0" data-top-anchor="menu-anchor-top" data-btm-anchor="end-of-content">
                 <div class="row">
                     <?php if (empty($hide_menu)): ?>
-                        <div class="title-bar hide-for-medium" data-responsive-toggle="main-menu" data-hide-for="medium">
+                        <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
                             <button class="menu-icon" type="button" data-toggle="main-menu"></button>
                             <div class="title-bar-title">Menu</div>
                         </div>
@@ -107,7 +107,7 @@ Body Class: <?= \lightningsdk\core\View\CMS::plain('site_body_class', ['norender
             <?php endif; ?>
         </div>
         <?php if (empty($hide_footer)): ?>
-            <div style="margin-top:auto;">
+            <div class="page-footer" style="margin-top:auto;">
                 <?= \lightningsdk\core\View\CMS::embed('site_template_footer', ['cache' => true]); ?>
             </div>
         <?php endif; ?>
