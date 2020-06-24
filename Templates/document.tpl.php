@@ -28,8 +28,9 @@ Body Class: <?= \lightningsdk\core\View\CMS::plain('site_body_class', ['norender
             </div>
         <?php endif; ?>
         <?php if (empty($hide_menu) || ClientUser::getInstance()->isAdmin()): ?>
+        <div id="menu-anchor-top"></div>
         <div id="menu-container" style="z-index: 1000" data-sticky-container>
-            <div id="menu-wrapper" class="sticky" style="width:100%" data-sticky data-margin-top="0" data-top-anchor="menu-container">
+            <div id="menu-wrapper" class="sticky" style="width:100%" data-sticky data-margin-top="0" data-top-anchor="menu-anchor-top" data-btm-anchor="end-of-content">
                 <div class="row">
                     <?php if (empty($hide_menu)): ?>
                         <div class="title-bar hide-for-medium" data-responsive-toggle="main-menu" data-hide-for="medium">
@@ -52,7 +53,7 @@ Body Class: <?= \lightningsdk\core\View\CMS::plain('site_body_class', ['norender
                         </div>
                     <?php endif; ?>
                     <?php if (ClientUser::getInstance()->isAdmin()): ?>
-                        <div class="title-bar hide-for-medium" data-responsive-toggle="admin-menu" data-hide-for="medium">
+                        <div class="title-bar" data-responsive-toggle="admin-menu" data-hide-for="medium">
                             <button class="menu-icon" type="button" data-toggle="admin-menu"></button>
                             <div class="title-bar-title">Admin Menu</div>
                         </div>
@@ -112,5 +113,6 @@ Body Class: <?= \lightningsdk\core\View\CMS::plain('site_body_class', ['norender
         <?php endif; ?>
 </div>
 <?= $this->renderFooter(); ?>
+<div id="end-of-content"></div>
 </body>
 </html>
