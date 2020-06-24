@@ -13,6 +13,10 @@ return [
                     'dest' => 'lightning.min.js',
                     'requires_module' => ['lightningsdk/jquery']
                 ],
+                'js/init.js' => [
+                    'dest' => 'lightning.min.js',
+                    'requires_module' => ['lightningsdk/jquery', 'lightningsdk/core']
+                ],
             ],
         ],
         'css' => [
@@ -20,6 +24,7 @@ return [
                 // Source file => Dest file
                 'vendor/zurb/foundation/dist/css/foundation.css' => 'lightning.css',
                 'vendor/zurb/foundation/dist/css/foundation-float.css' => 'lightning.css',
+                'css/menu-fix.scss' => 'lightning.css',
             ],
         ],
         'sass' => [
