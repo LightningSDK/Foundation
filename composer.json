@@ -3,7 +3,7 @@
   "type": "library",
   "description": "Adds foundation 6 functionality and templates",
   "version": "6.6.0",
-  "require": {
+  "require-dev": {
     "zurb/foundation": "^6.6"
   }
 }
