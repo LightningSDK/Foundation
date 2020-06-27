@@ -33,7 +33,7 @@ Body Class: <?= \lightningsdk\core\View\CMS::plain('site_body_class', ['norender
             <div id="menu-wrapper" class="sticky" style="width:100%" data-sticky data-margin-top="0" data-top-anchor="menu-anchor-top" data-btm-anchor="end-of-content">
                 <div class="row">
                     <?php if (empty($hide_menu)): ?>
-                        <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
+                        <div class="title-bar hide-for-medium" data-responsive-toggle="main-menu">
                             <button class="menu-icon" type="button" data-toggle="main-menu"></button>
                             <div class="title-bar-title">Menu</div>
                         </div>
@@ -53,7 +53,7 @@ Body Class: <?= \lightningsdk\core\View\CMS::plain('site_body_class', ['norender
                         </div>
                     <?php endif; ?>
                     <?php if (ClientUser::getInstance()->isAdmin()): ?>
-                        <div class="title-bar" data-responsive-toggle="admin-menu" data-hide-for="medium">
+                        <div class="title-bar hide-for-medium" data-responsive-toggle="admin-menu">
                             <button class="menu-icon" type="button" data-toggle="admin-menu"></button>
                             <div class="title-bar-title">Admin Menu</div>
                         </div>
