@@ -4,5 +4,6 @@
   "description": "Adds foundation 6 functionality and templates",
   "version": "6.6.0",
   "require": {
+    "zurb/foundation": "6.6.3"
   }
 }
